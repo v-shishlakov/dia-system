@@ -5,30 +5,6 @@
 
 	<display-name>applicationContext</display-name>
 
-    <!--<servlet>-->
-        <!--<servlet-name>mvc-dispatcher</servlet-name>-->
-        <!--<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>-->
-        <!--<init-param>-->
-            <!--<param-name>contextConfigLocation</param-name>-->
-            <!--<param-value>/WEB-INF/servlet-context.xml</param-value>-->
-        <!--</init-param>-->
-
-        <!--<load-on-startup>1</load-on-startup>-->
-    <!--</servlet>-->
-
-    <!--<servlet-mapping>-->
-        <!--<servlet-name>mvc-dispatcher</servlet-name>-->
-        <!--<url-pattern>/</url-pattern>-->
-    <!--</servlet-mapping>-->
-
-    <!--<context-param>-->
-        <!--<param-name>contextConfigLocation</param-name>-->
-        <!--<param-value>/WEB-INF/servlet-context.xml</param-value>-->
-    <!--</context-param>-->
-
-
-
-
     <!-- Базовый сервлет, обрабатывает все запросы к приложению -->
     <servlet>
         <servlet-name>appServlet</servlet-name>
@@ -44,7 +20,6 @@
         <servlet-name>appServlet</servlet-name>
         <url-pattern>/</url-pattern>
     </servlet-mapping>
-
 
     <!-- Создаёт контейнер Spring, разделяемый всеми сервлетами и фильтрами -->
     <listener>
