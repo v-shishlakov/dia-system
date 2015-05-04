@@ -15,6 +15,13 @@ http://www.springframework.org/schema/context/spring-context-3.0.xsd http://www.
     <import resource="data.xml" />
 
 
+    <!--persistence-->
+    <bean id="UserPersistence" class="com.diasystem.persistence.hibernateImpl.UserPersistenceImpl"/>
+
+    <!--Service-->
+    <bean id="UserService" class="com.diasystem.service.impl.UserServiceImpl"/>
+
+
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/pages/"/>
         <property name="suffix" value=".jsp"/>
