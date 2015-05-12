@@ -6,7 +6,7 @@
     <persistence-unit name="developer.remarks.persistence.unit">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
         <properties>
-            <property name="hibernate.hbm2ddl.auto" value="DELETE"/>
+            <property name="hibernate.hbm2ddl.auto" value="UPDATE"/>
         </properties>
     </persistence-unit>
 </persistence>

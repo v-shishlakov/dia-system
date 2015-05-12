@@ -17,8 +17,8 @@ public class UserServiceImpl implements UserService<User> {
     private UserPersistence userPersistence;
 
     @Override
-    public List<User> getUserList() {
-        return userPersistence.getUserList();
+    public List<User> getUsers() {
+        return userPersistence.getUsers();
     }
 
     @Override

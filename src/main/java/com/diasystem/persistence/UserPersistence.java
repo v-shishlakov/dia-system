@@ -5,7 +5,7 @@ import java.util.List;
 
 public interface UserPersistence <User> {
 
-    List<User> getUserList();
+    List<User> getUsers();
 
     User getUser(Long id);
 

@@ -1,4 +1,4 @@
-package com.diasystem.persistence.hibernateImpl;
+package com.diasystem.persistence.hibernate;
 
 
 import com.diasystem.persistence.UserPersistence;
@@ -10,13 +10,13 @@ import javax.persistence.PersistenceContext;
 import java.util.List;
 
 @Repository
-public class UserPersistenceImpl implements UserPersistence<User> {
+public class UserImpl implements UserPersistence<User> {
 
     @PersistenceContext
     private EntityManager em;
 
     @Override
-    public List getUserList() {
+    public List<User> getUsers() {
         return em.createQuery("From User", User.class).getResultList();
     }
 
@@ -27,11 +27,13 @@ public class UserPersistenceImpl implements UserPersistence<User> {
 
     @Override
     public void create(User user) {
+
         em.persist(user);
     }
 
     @Override
     public void update(User user) {
+
         em.merge(user);
     }
 
@@ -39,8 +41,8 @@ public class UserPersistenceImpl implements UserPersistence<User> {
     public void delete(Long id) {
         User user = new User();
         user.setId(id);
-
-        em.remove(em.merge(user));
+        Object o  = em.merge(user);
+        em.remove(o);
 
     }
 }
