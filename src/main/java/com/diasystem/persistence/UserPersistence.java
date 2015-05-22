@@ -1,13 +1,12 @@
 package com.diasystem.persistence;
 
-
 import java.util.List;
 
-public interface UserPersistence <User> {
+public interface UserPersistence<User> {
 
-    List<User> getUsers();
+    List<User> findUsers();
 
-    User getUser(Long id);
+    User findById(Long id);
 
     void create(User user);
 

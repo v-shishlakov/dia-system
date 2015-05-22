@@ -2,15 +2,15 @@ package com.diasystem.persistence;
 
 import java.util.List;
 
-public interface TaskPersistence <Task> {
+public interface TaskPersistence<Task> {
 
-    List<Task> getTasks();
+    List<Task> findTasks(long id);
 
-    Task getTask(Long id);
+    Task findBuId(Long id);
 
-    void create(Task user);
+    void create(Task task);
 
-    void update(Task user);
+    void update(Task task);
 
     void delete(Long id);
 

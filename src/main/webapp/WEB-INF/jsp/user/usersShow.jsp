@@ -5,18 +5,19 @@
     <title>Users</title>
 </head>
 <body>
-    <table style="margin: auto" cellspacing="0" border="1" cellpadding="3" width="500">
+<br>
+    <table style="margin: auto" cellspacing="0" border="1" cellpadding="3" width="auto" bgcolor="#fff8dc">
+        <caption><h3>Users</h3></caption>
         <tr>
-            <th>user name</th>
+            <th width="200">user name</th>
             <th colspan="2">action</th>
         </tr>
         <tr>
-            <td><a href="renderUser?userId=0">add User</a></td>
+            <td colspan="3"  ><a href="renderUser?userId=0">add User</a></td>
         </tr>
-        <c:forEach items="${users}" var="user">
+        <c:forEach items="${users}" var="user" >
             <tr>
-                <td>${user.userName.trim()}</td>
-                <td><a href="showTask?userId=${user.userId}">Tasks</a></td>
+                <td><a href="getTaskList?userId=${user.userId}">${user.userName}</a></td>
                 <td><a href="renderUser?userId=${user.userId}">Edit</a></td>
                 <td><a href="deleteUser?userId=${user.userId}">Delete</a></td>
             </tr>

@@ -5,14 +5,15 @@
     <title>AddOrEditUser.jsp</title>
 </head>
 <body>
-    <h3>Add Or Edit User</h3>
-
-    <form:form action="saveUser" modelAttribute="user" method="POST">
-        <table>
+<a href="/"><<< beak</a>
+    <form:form action="saveUser"  commandName="user" method="POST">
+        <table style="margin: auto" cellspacing="0" border="1" cellpadding="3" width="auto" bgcolor="#fff8dc">
+            <caption><h3>Add Or Edit User</h3></caption>
             <tr>
+                <th>Name User :</th>
                 <td>
-                    <form:input path="name" value="${user.name.trim()}"/>
-                    <form:input type="hidden" path="id" value="${user.id}"/>
+                    <form:input path="userName" value="${user.userName}"/>
+                    <form:input type="hidden" path="userId" value="${user.userId}"/>
                 </td>
                 <td>
                     <input type="submit" value="Save"/>

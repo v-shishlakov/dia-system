@@ -12,45 +12,42 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.util.List;
 
 @Controller
-class UserController {
+public class UserController {
 
-     @Autowired
-     private UserService userService;
+    @Autowired
+    private UserService userService;
 
     @RequestMapping(value = "/")
-    public String getUsers(ModelMap model){
+    public String getUserList(ModelMap model) {
 
-        List<User> users = userService.getUsers();
+        List<User> users = userService.getUserList();
 
         model.addAttribute("users", users);
-        return "show";
+        return "user/usersShow";
     }
 
-    @RequestMapping(value = "render")
-    public String renderUser(ModelMap model, @RequestParam Long id){
+    @RequestMapping(value = "renderUser")
+    public String renderUser(ModelMap model, @RequestParam Long userId) {
 
-        if (id == 0) {
-            model.addAttribute("user", new User());
-        }else{
-            model.addAttribute("user", userService.getUser(id));
-        }
-        return "addOrEdit";
+        model.addAttribute("user", userService.getUserById(userId));
+
+        return "user/addOrEdit";
     }
 
-    @RequestMapping(value = "delete")
-    public String deleteUser(@RequestParam Long id){
+    @RequestMapping(value = "deleteUser")
+    public String deleteUser(@RequestParam Long userId) {
 
-        userService.delete(id);
+        userService.delete(userId);
 
         return "redirect:/";
     }
 
     @RequestMapping(value = "saveUser")
-    public String saveUser(@ModelAttribute User user ){
+    public String saveUser(@ModelAttribute User user) {
 
-        if (user.getId() == null){
+        if (user.getUserId() == null) {
             userService.create(user);
-        }else{
+        } else {
             userService.update(user);
         }
         return "redirect:/";

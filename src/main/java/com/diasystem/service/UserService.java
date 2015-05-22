@@ -1,13 +1,14 @@
 package com.diasystem.service;
 
 
+
 import java.util.List;
 
 public interface UserService<User> {
 
-    List<User> getUsers();
+    List<User> getUserList();
 
-    User getUser(Long id);
+    User getUserById(Long id);
 
     void create(User user);
 

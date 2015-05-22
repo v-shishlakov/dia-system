@@ -11,10 +11,10 @@ public class Task implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "taskId")
-    private String id;
+    private Long taskId;
 
     @Column(name = "taskName")
-    private String name;
+    private String taskName;
 
     @Column(name = "date")
     @Temporal(value=TemporalType.DATE)
@@ -35,38 +35,37 @@ public class Task implements Serializable {
     @Column(name = "timeOfWork")
     private String timeOfWork;
 
-    @ManyToOne
-    @JoinColumn(name = "id")
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "userId", nullable = false)
     private User user;
 
-    public Task(String name, Date date, String estimateFirst, String estimateSecond, String startTime, String finalTime, String timeOfWork, User user) {
-        this.name = name;
+    public Task(String taskName, Date date, String estimateFirst, String estimateSecond, String startTime, String finalTime, String timeOfWork) {
+        this.taskName = taskName;
         this.date = date;
         this.estimateFirst = estimateFirst;
         this.estimateSecond = estimateSecond;
         this.startTime = startTime;
         this.finalTime = finalTime;
         this.timeOfWork = timeOfWork;
-        this.user = user;
     }
 
     public Task() {
     }
 
-    public String getId() {
-        return id;
+    public Long getTaskId() {
+        return taskId;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setTaskId(Long taskId) {
+        this.taskId = taskId;
     }
 
-    public String getName() {
-        return name;
+    public String getTaskName() {
+        return taskName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setTaskName(String name) {
+        this.taskName = name;
     }
 
     public Date getDate() {
@@ -124,4 +123,6 @@ public class Task implements Serializable {
     public void setUser(User user) {
         this.user = user;
     }
+
+
 }

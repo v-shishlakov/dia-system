@@ -2,50 +2,61 @@ package com.diasystem.entity;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Table(name = "users")
 public class User implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id" )
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "userId")
+    private Long userId;
 
-    @Column(name = "name")
-    private String name;
+    @Column(name = "userName")
+    private String userName;
+
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "user", cascade = CascadeType.MERGE)
+    private List<Task> taskList;
 
 
     public User() {}
 
-    public User(Long id) {
-        this.id   = id;
+    public User(Long UserId) {
+        this.userId = UserId;
     }
 
-    public User(String name) {
-        this.name = name;
+    public User(String UserName) {
+        this.userName = UserName;
     }
 
-    public User( Long id, String name) {
+    public User( Long UserId, String UserName) {
 
-        this.id   = id;
-        this.name = name;
+        this.userId = UserId;
+        this.userName = UserName;
     }
 
-
-    public Long getId() {
-        return id;
+    public Long getUserId() {
+        return userId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setUserId(Long id) {
+        this.userId = id;
     }
 
-    public String getName() {
-        return name;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUserName(String name) {
+        this.userName = name;
+    }
+
+    public List<Task> getTaskList() {
+        return taskList;
+    }
+
+    public void setTaskList(List<Task> taskList) {
+        this.taskList = taskList;
     }
 }
