@@ -11,13 +11,14 @@
             <th colspan="2">action</th>
         </tr>
         <tr>
-            <td><a href="render?id=0">add User</a></td>
+            <td><a href="renderUser?userId=0">add User</a></td>
         </tr>
-        <c:forEach items="${tasks}" var="user">
+        <c:forEach items="${users}" var="user">
             <tr>
-                <td>${user.name.trim()}</td>
-                <td><a href="render?id=${user.id}">Edit</a></td>
-                <td><a href="delete?id=${user.id}">Delete</a></td>
+                <td>${user.userName.trim()}</td>
+                <td><a href="showTask?userId=${user.userId}">Tasks</a></td>
+                <td><a href="renderUser?userId=${user.userId}">Edit</a></td>
+                <td><a href="deleteUser?userId=${user.userId}">Delete</a></td>
             </tr>
         </c:forEach>
     </table>
