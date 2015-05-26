@@ -3,10 +3,11 @@
 <html>
 <head>
     <title>AddOrEditUser.jsp</title>
+
 </head>
 <body>
 <a href="/"><<< beak</a>
-    <form:form action="saveUser"  commandName="user" method="POST">
+    <form:form action="saveOrUpdateUser"  commandName="user" method="POST">
         <table style="margin: auto" cellspacing="0" border="1" cellpadding="3" width="auto" bgcolor="#fff8dc">
             <caption><h3>Add Or Edit User</h3></caption>
             <tr>

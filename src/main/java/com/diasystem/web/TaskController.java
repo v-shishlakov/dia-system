@@ -10,7 +10,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.support.ByteArrayMultipartFileEditor;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -43,8 +42,19 @@ public class TaskController {
         return "task/tasksShow";
     }
 
+    @RequestMapping(value = "getFilterTaskList")
+    public String getFilterTaskList(ModelMap model, @RequestParam Long userId, @RequestParam Date firstDate, @RequestParam Date SecondDate) {
+
+        List<Task> tasks = taskService.getFilterTaskList(userId, firstDate, SecondDate);
+
+        model.addAttribute("tasks", tasks);
+        model.addAttribute("userId", userId);
+
+        return "task/tasksShow";
+    }
+
     @RequestMapping(value = "renderTask")
-    public String renderTask(ModelMap model, @RequestParam Long userId, @RequestParam Long taskId) {
+    public String renderTask(ModelMap model, @RequestParam Long userId,  @RequestParam Long taskId) {
 
         Task task = (Task) taskService.getTaskById(taskId);
         task.setUser(new User(userId));
@@ -52,16 +62,14 @@ public class TaskController {
         model.addAttribute("userId", userId);
 
         return "task/addOrEdit";
+
     }
 
-    @RequestMapping(value = "saveTask", method = RequestMethod.POST)
-    public String saveTask(@ModelAttribute Task task) {
+    @RequestMapping(value = "saveOrUpdateTask", method = RequestMethod.POST)
+    public String saveOrUpdateTask(@ModelAttribute Task task) {
 
-        if (task.getTaskId() == null) {
-            taskService.create(task);
-        } else {
-            taskService.update(task);
-        }
+        taskService.saveOrUpdate(task);
+
         return redirectTo("getTaskList?userId=", task.getUser().getUserId());
     }
 

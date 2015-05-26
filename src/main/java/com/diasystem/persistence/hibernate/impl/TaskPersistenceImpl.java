@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.util.Date;
 import java.util.List;
 
 @Repository
@@ -15,8 +16,14 @@ public class TaskPersistenceImpl implements TaskPersistence<Task> {
     private EntityManager em;
 
     @Override
-    public List<Task> findTasks(long userId) {
+    public List<Task> findTasks(Long userId) {
         return em.createQuery("From Task where userId = :userId", Task.class).setParameter("userId", userId).getResultList();
+    }
+
+    @Override
+    public List<Task> findFilterTasks(Long userId, Date firstDate, Date secondDate) {
+        return em.createQuery("From Task where userId = :userId and DATE > :firstDate and DATE < :secondDate", Task.class)
+                .setParameter("userId", userId).setParameter("firstDate", firstDate).setParameter("secondDate", secondDate).getResultList();
     }
 
     @Override

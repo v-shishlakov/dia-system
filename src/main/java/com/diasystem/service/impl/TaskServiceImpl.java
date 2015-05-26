@@ -8,7 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Date;
 import java.util.List;
+
 @Service
 public class TaskServiceImpl implements TaskService<Task> {
 
@@ -16,8 +18,13 @@ public class TaskServiceImpl implements TaskService<Task> {
     private TaskPersistence tp;
 
     @Override
-    public List<Task> getTaskList(Long taskId) {
-        return tp.findTasks(taskId);
+    public List<Task> getTaskList(Long userId) {
+        return tp.findTasks(userId);
+    }
+
+    @Override
+    public List<Task> getFilterTaskList(Long userId, Date firstDate, Date secondDate) {
+        return tp.findFilterTasks(userId, firstDate, secondDate);
     }
 
     @Override
@@ -32,15 +39,13 @@ public class TaskServiceImpl implements TaskService<Task> {
 
     @Transactional
     @Override
-    public void create(Task task) {
-        tp.create(task);
-    }
+    public void saveOrUpdate(Task task) {
 
-    @Transactional
-    @Override
-    public void update(Task task) {
-        tp.update(task);
-
+        if (task.getTaskId() == null) {
+            tp.create(task);
+        } else {
+            tp.update(task);
+        }
     }
 
     @Transactional

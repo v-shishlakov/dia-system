@@ -42,14 +42,11 @@ public class UserController {
         return "redirect:/";
     }
 
-    @RequestMapping(value = "saveUser")
-    public String saveUser(@ModelAttribute User user) {
+    @RequestMapping(value = "saveOrUpdateUser")
+    public String saveOrUpdateUser(@ModelAttribute User user) {
 
-        if (user.getUserId() == null) {
-            userService.create(user);
-        } else {
-            userService.update(user);
-        }
+            userService.saveOrUpdate(user);
+
         return "redirect:/";
     }
 

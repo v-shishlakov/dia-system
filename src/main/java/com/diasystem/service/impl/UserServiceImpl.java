@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+
 @Service
 public class UserServiceImpl implements UserService<User> {
 
@@ -33,14 +34,13 @@ public class UserServiceImpl implements UserService<User> {
 
     @Transactional
     @Override
-    public void create(User user) {
-        up.create(user);
-    }
+    public void saveOrUpdate(User user) {
 
-    @Transactional
-    @Override
-    public void update(User user) {
-        up.update(user);
+        if (user.getUserId() == null) {
+            up.create(user);
+        } else {
+            up.update(user);
+        }
     }
 
     @Transactional

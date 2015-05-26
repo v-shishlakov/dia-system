@@ -1,10 +1,15 @@
 package com.diasystem.persistence;
 
+import com.diasystem.entity.Task;
+
+import java.util.Date;
 import java.util.List;
 
 public interface TaskPersistence<Task> {
 
-    List<Task> findTasks(long id);
+    List<Task> findTasks(Long id);
+
+    List<Task> findFilterTasks(Long userId, Date firstDate, Date secondDate);
 
     Task findBuId(Long id);
 
@@ -13,5 +18,4 @@ public interface TaskPersistence<Task> {
     void update(Task task);
 
     void delete(Long id);
-
 }

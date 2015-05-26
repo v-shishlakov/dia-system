@@ -16,7 +16,7 @@ public class User implements Serializable {
     @Column(name = "userName")
     private String userName;
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "user", cascade = CascadeType.MERGE)
+    @OneToMany(targetEntity = Task.class, mappedBy = "user", cascade = CascadeType.MERGE)
     private List<Task> taskList;
 
 

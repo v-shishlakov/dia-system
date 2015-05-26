@@ -1,7 +1,6 @@
 package com.diasystem.service;
 
 
-
 import java.util.List;
 
 public interface UserService<User> {
@@ -10,9 +9,11 @@ public interface UserService<User> {
 
     User getUserById(Long id);
 
-    void create(User user);
+//    void create(User user);
+//
+//    void update(User user);
 
-    void update(User user);
+    void saveOrUpdate(User user);
 
     void delete(Long id);
 

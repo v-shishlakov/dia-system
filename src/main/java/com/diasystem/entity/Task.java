@@ -35,8 +35,8 @@ public class Task implements Serializable {
     @Column(name = "timeOfWork")
     private String timeOfWork;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "userId", nullable = false)
+    @ManyToOne(targetEntity = User.class)
+    @JoinColumn(name = "userId", referencedColumnName = "userid",nullable = false)
     private User user;
 
     public Task(String taskName, Date date, String estimateFirst, String estimateSecond, String startTime, String finalTime, String timeOfWork) {
