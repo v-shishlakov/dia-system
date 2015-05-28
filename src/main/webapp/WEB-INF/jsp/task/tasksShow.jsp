@@ -27,12 +27,14 @@
         });
     </script>
 
+
 </head>
 <body>
 <a href="/"><<< beak</a>
 
-<form action="getFilterTaskList">
-    <table style="margin: auto" cellspacing="0" border="1" cellpadding="3" width="auto" bgcolor="#fff8dc">
+
+<table style="margin: auto" cellspacing="0" border="1" cellpadding="3" width="auto" bgcolor="#fff8dc">
+    <form name="form" action="getFilterTaskList">
 
         <caption><h3>Tasks</h3></caption>
         <tr>
@@ -41,19 +43,23 @@
             <th>Estimate Second</th>
             <th>Time Of Work</th>
             <th>Date</th>
-            <th>Start Time</th>
-            <th>Final Time</th>
+            <th>Total Estimate</th>
+            <th>Actual Total</th>
             <th colspan="2">action</th>
         </tr>
+
         <tr>
             <td colspan="1"><a href="renderTask?userId=${userId}&taskId=0">add Task</a></td>
-            <td colspan="2"><label for="startDatePicker">Filter by date: </label>
-                <input type="date" id="startDatePicker" name="firstDate"/></td>
-            <td colspan="2"><label for="startDatePicker2">by: </label>
+
+            <td colspan="8">
+                <label for="startDatePicker">Filter by date: </label>
+                <input type="date" id="startDatePicker" name="firstDate"/>
+                <label for="startDatePicker2">by: </label>
                 <input type="date" id="startDatePicker2" name="SecondDate"/>
                 <input type="hidden" name="userId" value="${userId}"/>
+
+                <input type="submit" value="filter"/>
             </td>
-            <td colspan="4"><input type="submit" value="filter"/></td>
         </tr>
 
         <c:forEach items="${tasks}" var="task">
@@ -63,15 +69,15 @@
             <td>${task.estimateSecond}</td>
             <td>${task.timeOfWork}</td>
             <td>${task.date}</td>
-            <td>${task.startTime}</td>
-            <td>${task.finalTime}</td>
+            <td>${task.totalEstimateTime}</td>
+            <td>${task.actualTotalTime}</td>
 
             <td><a href="renderTask?userId=${userId}&taskId=${task.taskId}">Edit</a></td>
             <td><a href="deleteTask?userId=${userId}&taskId=${task.taskId}">Delete</a></td>
         <tr>
             </c:forEach>
         </tr>
-    </table>
-</form>
+    </form>
+</table>
 </body>
 </html>

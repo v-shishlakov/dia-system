@@ -46,12 +46,12 @@
             <td><form:input id="startDatePicker" path="date" value="${task.date}"/></td>
         </tr>
         <tr>
-            <th><form:label path="startTime">Start Time:</form:label></th>
-            <td><form:input path="startTime" value="${task.startTime}"/></td>
+            <th><form:label path="totalEstimateTime">Total Estimate:</form:label></th>
+            <td><form:input path="sttotalEstimateTimeartTime" value="${task.totalEstimateTime}"/></td>
         </tr>
         <tr>
-            <th><form:label path="finalTime">Final Time:</form:label></th>
-            <td><form:input path="finalTime" value="${task.finalTime}"/></td>
+            <th><form:label path="actualTotalTime">Actual Total:</form:label></th>
+            <td><form:input path="actualTotalTime" value="${task.actualTotalTime}"/></td>
         </tr>
         <tr>
             <th><form:label path="timeOfWork">Time Of Work:</form:label></th>

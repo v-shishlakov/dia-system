@@ -26,11 +26,11 @@ public class Task implements Serializable {
     @Column(name = "estimateSecond")
     private String estimateSecond;
 
-    @Column(name = "startTime")
-    private String startTime;
+    @Column(name = "totalEstimateTime")
+    private String totalEstimateTime;
 
-    @Column(name = "finalTime")
-    private String finalTime;
+    @Column(name = "actualTotalTime")
+    private String actualTotalTime;
 
     @Column(name = "timeOfWork")
     private String timeOfWork;
@@ -39,13 +39,13 @@ public class Task implements Serializable {
     @JoinColumn(name = "userId", referencedColumnName = "userid",nullable = false)
     private User user;
 
-    public Task(String taskName, Date date, String estimateFirst, String estimateSecond, String startTime, String finalTime, String timeOfWork) {
+    public Task(String taskName, Date date, String estimateFirst, String estimateSecond, String totalEstimateTime, String actualTotalTime, String timeOfWork) {
         this.taskName = taskName;
         this.date = date;
         this.estimateFirst = estimateFirst;
         this.estimateSecond = estimateSecond;
-        this.startTime = startTime;
-        this.finalTime = finalTime;
+        this.totalEstimateTime = totalEstimateTime;
+        this.actualTotalTime = actualTotalTime;
         this.timeOfWork = timeOfWork;
     }
 
@@ -92,20 +92,20 @@ public class Task implements Serializable {
         this.estimateSecond = estimateSecond;
     }
 
-    public String getStartTime() {
-        return startTime;
+    public String getTotalEstimateTime() {
+        return totalEstimateTime;
     }
 
-    public void setStartTime(String startTime) {
-        this.startTime = startTime;
+    public void setTotalEstimateTime(String totalEstimateTime) {
+        this.totalEstimateTime = totalEstimateTime;
     }
 
-    public String getFinalTime() {
-        return finalTime;
+    public String getActualTotalTime() {
+        return actualTotalTime;
     }
 
-    public void setFinalTime(String finalTime) {
-        this.finalTime = finalTime;
+    public void setActualTotalTime(String actualTotalTime) {
+        this.actualTotalTime = actualTotalTime;
     }
 
     public String getTimeOfWork() {
