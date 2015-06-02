@@ -10,3 +10,5 @@
         </properties>
     </persistence-unit>
 </persistence>
+
+        <!--never    hibernate будет стараться текущую конфигурацию JPA наложить на существующую базу данных.-->

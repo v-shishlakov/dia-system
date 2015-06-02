@@ -9,7 +9,7 @@ import java.util.Date;
 public class Task implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "taskId")
     private Long taskId;
 
@@ -35,8 +35,8 @@ public class Task implements Serializable {
     @Column(name = "timeOfWork")
     private String timeOfWork;
 
-    @ManyToOne(targetEntity = User.class)
-    @JoinColumn(name = "userId", referencedColumnName = "userid",nullable = false)
+    @ManyToOne()
+    @JoinColumn(name = "userId")
     private User user;
 
     public Task(String taskName, Date date, String estimateFirst, String estimateSecond, String totalEstimateTime, String actualTotalTime, String timeOfWork) {

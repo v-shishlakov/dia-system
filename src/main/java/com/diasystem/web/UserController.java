@@ -17,7 +17,7 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping(value = "/")
+    @RequestMapping(value = "/getUserList")
     public String getUserList(ModelMap model) {
 
         List<User> users = userService.getUserList();
@@ -26,7 +26,7 @@ public class UserController {
         return "user/usersShow";
     }
 
-    @RequestMapping(value = "renderUser")
+    @RequestMapping(value = "/renderUser")
     public String renderUser(ModelMap model, @RequestParam Long userId) {
 
         model.addAttribute("user", userService.getUserById(userId));
@@ -34,20 +34,34 @@ public class UserController {
         return "user/addOrEdit";
     }
 
-    @RequestMapping(value = "deleteUser")
+    @RequestMapping(value = "/deleteUser")
     public String deleteUser(@RequestParam Long userId) {
 
         userService.delete(userId);
 
-        return "redirect:/";
+        return "redirect:/getUserList";
     }
 
     @RequestMapping(value = "saveOrUpdateUser")
     public String saveOrUpdateUser(@ModelAttribute User user) {
 
-            userService.saveOrUpdate(user);
+        userService.saveOrUpdate(user);
 
-        return "redirect:/";
+        return "redirect:/getUserList";
+    }
+
+    @RequestMapping(value = "/errors/403")
+    public String handle403(ModelMap model) {
+
+//        model.addAttribute("errorCode", "400");
+//        model.addAttribute("message", "Error 400 happens");
+
+        return "/j_spring_security_logout";
+    }
+
+    @RequestMapping(value = "/errors/404")
+    public String handle404() {
+        return "redirect:/getUserList";
     }
 
 

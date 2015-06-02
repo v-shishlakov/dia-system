@@ -8,10 +8,10 @@
     <context:property-placeholder location="classpath:META-INF/hibernate.properties"/>
 
        <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-           <property name="driverClassName" value="${className}"/>
-           <property name="url" value="${url}"/>
-           <property name="username" value="${name}"/>
-           <property name="password" value="${password}"/>
+           <property name="driverClassName" value="${database.driver}"/>
+           <property name="url" value="${database.url}"/>
+           <property name="username" value="${database.user}"/>
+           <property name="password" value="${database.password}"/>
        </bean>
 
 
@@ -19,7 +19,7 @@
 
         <bean id="jpaVendorAdapter" class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
             <property name="database" value="POSTGRESQL"/>
-            <property name="databasePlatform" value="org.hibernate.dialect.PostgreSQL9Dialect"/>
+            <property name="databasePlatform" value="${database.dialect}"/>
         </bean>
 
        <bean   id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">

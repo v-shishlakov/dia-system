@@ -3,19 +3,16 @@
 <html>
 <head>
 
-    <%--<script src="http://code.jquery.com/jquery-1.11.3.js"></script>--%>
+    <script src="http://code.jquery.com/jquery-1.11.3.js"></script>
 
 
     <title>Users</title>
 </head>
 <body>
-<%--<script>--%>
-<%--$(document).ready(function () {--%>
-<%--alert("Документ доступен для выполнения скриптов");--%>
-<%--});--%>
-<%--</script>--%>
-
-
+    <c:if test="${pageContext.request.userPrincipal.name != null}">
+        <p>Welcome : ${pageContext.request.userPrincipal.name}
+            | <a href="<c:url value="/j_spring_security_logout" />"> Logout</a></p>
+    </c:if>
 <table style="margin: auto" cellspacing="0" border="1" cellpadding="3" width="auto" bgcolor="#fff8dc">
     <caption><h3>Users</h3></caption>
     <tr>
@@ -37,3 +34,10 @@
 
 </body>
 </html>
+
+<script>
+    $(document).ready(function () {
+        $("td").css("font-style", "italic");
+        $("th").css("color", "red");
+    });
+</script>

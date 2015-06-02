@@ -12,15 +12,6 @@
     <script src="http://code.jquery.com/jquery-1.8.3.js"></script>
     <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
 
-    <script>
-        $(function () {
-            $("#startDatePicker").datepicker({
-                inline: true,
-                dateFormat: "yy-mm-dd"
-            });
-        });
-    </script>
-
 </head>
 <body>
 <a href="getTaskList?userId=${userId}"><<< beak</a>
@@ -47,7 +38,7 @@
         </tr>
         <tr>
             <th><form:label path="totalEstimateTime">Total Estimate:</form:label></th>
-            <td><form:input path="sttotalEstimateTimeartTime" value="${task.totalEstimateTime}"/></td>
+            <td><form:input path="totalEstimateTime" value="${task.totalEstimateTime}"/></td>
         </tr>
         <tr>
             <th><form:label path="actualTotalTime">Actual Total:</form:label></th>
@@ -69,3 +60,13 @@
 </form:form>
 </body>
 </html>
+
+<script>
+    $(function () {
+        $("#startDatePicker").datepicker({
+            inline: true,
+            dateFormat: "yy-mm-dd"
+        });
+    });
+</script>
+

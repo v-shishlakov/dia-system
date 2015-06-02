@@ -9,14 +9,14 @@ import java.util.List;
 public class User implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "userId")
     private Long userId;
 
     @Column(name = "userName")
     private String userName;
 
-    @OneToMany(targetEntity = Task.class, mappedBy = "user", cascade = CascadeType.MERGE)
+    @OneToMany(mappedBy = "user",  fetch=FetchType.LAZY, cascade = CascadeType.REMOVE)
     private List<Task> taskList;
 
 
